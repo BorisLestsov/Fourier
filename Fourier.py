@@ -36,18 +36,18 @@ class Fourier:
         line, = ax.plot(self.x, self.sum, c='b')
         ani = animation.FuncAnimation(fig, _graph_animate, frames=self.maxk, interval=500,
                                       repeat=False, init_func=_init_f)
-        plt.xlim(self.x1, self.x2)
-        plt.ylim(self.f(self.x1))
+        plt.xlim(self.x1-1, self.x2+1)
+        plt.ylim(np.min(self.vec_f(self.x)) - 1, np.max(self.f(self.x)) + 1)
         plt.show()
 
 
 def f(x):
-    return x**2
+    return np.sin(x**2)
 
 
 def main():
     x1 = 1
-    x2 = 2
+    x2 = 10
     n = 100
     maxk = 100
 
